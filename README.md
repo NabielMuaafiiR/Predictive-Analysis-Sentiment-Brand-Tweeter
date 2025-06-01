@@ -28,7 +28,7 @@ Menjelaskan tujuan dari pernyataan masalah:
 Dataset yang diambil pada projek ini berasal dari kaggle https://www.kaggle.com/datasets/tusharpaul2001/brand-sentiment-analysis-dataset . Data terdiri dari 8589 baris dan 3 kolom: tweet_text (text tweet), emotion_in_tweet_is_directed_at (brand apa yang dibahas), dan is_there_an_emotion_directed_at_a_brand_or_product (label sentimen tweet). Dataset semua bertipe string.
 
 ### Tipe Data
-**(gambar tipe data)**
+<img src="https://github.com/NabielMuaafiiR/Predictive-Analysis-Sentiment-Brand-Tweeter/blob/main/img/info.jpg" align="center"><br>
 
 ### Deskripsi Variabel
 Variabel  |	Keterangan
@@ -39,23 +39,23 @@ is_there_an_emotion_directed_at_a_brand_or_product | Label sentimen tweet
 
 ### Visualisasi Data EDA
 
-**(gambar sebaran sentimen)**
-
+#### 1. Distribusi Sentimen
+<img src="https://github.com/NabielMuaafiiR/Predictive-Analysis-Sentiment-Brand-Tweeter/blob/main/img/sebaran sentimen.jpg" align="center"><br><br>
 Interpretasi:
 Data yang digunakan dalam proyek ini memiliki tingkat ketidakseimbangan (imbalanced class distribution) yang cukup tinggi. Sentimen positif mendominasi secara signifikan dibandingkan sentimen negatif, sementara jumlah data dengan sentimen netral sangat sedikit. Ketidakseimbangan ini berpotensi memengaruhi kinerja model dalam mengenali kelas minoritas, sehingga perlu diperhatikan dalam proses pelatihan dan evaluasi model.
 
-**(gambar sebaran brand)**
-
+#### 2. Distribusi Brand
+<img src="https://github.com/NabielMuaafiiR/Predictive-Analysis-Sentiment-Brand-Tweeter/blob/main/img/sebaran brand.jpg" align="center"><br><br>
 Interpretasi:
 Sebaran brand yang dibahas dalam data sentimen analisis tweeter ini merujuk pada brand teknologi ternama, seperti apple dan google. Sebaran paling banyak terdapat pada iPad yang merupakan salah satu produk apple. Hampir secara keseluruhan brand yang dibahas adalah seputar teknologi apple.
 
-**(gambar sebaran sentimen tiap brand)**
-
+#### 3. Distribusi Sentimen Tiap Brand
+<img src="https://github.com/NabielMuaafiiR/Predictive-Analysis-Sentiment-Brand-Tweeter/blob/main/img/sebaran sentimen tiap brand.jpg" align="center"><br><br>
 Interpretasi:
 Sebaran sentimen tiap brand merujuk kepada positif semua. Hal ini dikarenakan terdapat banyak missing value yang tertera pada data asli, sehingga membuat sentimen lain yang kosong menjadi terhapus.
 
-**(gambar wordcloud)**
-
+#### 4. WordCloud
+<img src="https://github.com/NabielMuaafiiR/Predictive-Analysis-Sentiment-Brand-Tweeter/blob/main/img/wordcloud.jpg" align="center"><br><br>
 Interpretasi:
 Kata yang paling sering muncul adalah sxsw, yang sepertinya kalau dilihat dari datanya itu merupakan sebuah tagar suatu acara. Disisi lain produk seperti ipad, iphone, dan google sering muncul dalam data tweeter ini.
 
@@ -63,11 +63,11 @@ Kata yang paling sering muncul adalah sxsw, yang sepertinya kalau dilihat dari d
 ### Menangani Missing Value dan Duplikasi Data
 Pada tahap ini, dataset diperiksa untuk memastikan tidak ada nilai yang hilang (missing values) Berdasarkan analisis awal:
 
-**(gambar missing value)**
+<img src="https://github.com/NabielMuaafiiR/Predictive-Analysis-Sentiment-Brand-Tweeter/blob/main/img/is sum.jpg" align="center"><br>
 
 Terdapat banyak sekali missing value pada Kolom emotion_in_tweet_is_directed_at (brand yang dibahas), hal ini dilakukan yang namanya penghapusan missing value sekaligus menghapus duplikasi data, sehingga data menjadi seperti ini:
 
-**(gambar setelah dihapus)**
+<img src="https://github.com/NabielMuaafiiR/Predictive-Analysis-Sentiment-Brand-Tweeter/blob/main/img/gambar bersih.jpg" align="center"><br>
 
 ### Dilakukan pre-processing text meliputi berbagai tahapan berikut:
 ```
@@ -127,7 +127,7 @@ def cleaning(text):
 df_clean['tweet_text'] = df_clean['tweet_text'].apply(cleaning)
 ```
 
-**(gambar hasil cleaning)**
+<img src="https://github.com/NabielMuaafiiR/Predictive-Analysis-Sentiment-Brand-Tweeter/blob/main/img/hasil cleaning.jpg" align="center"><br>
 
 Pre-processing data pada text perlu dilakukan guna membantu model dalam memahami tiap karakter yang ada
 1. Cleansing adalah tahap dimana karakter dan tanda baca yang tidak diperlukan dihapus dari teks. Bekerja
@@ -146,7 +146,7 @@ df_clean['is_there_an_emotion_directed_at_a_brand_or_product'].replace({"Positiv
                                                                         "I can't tell": 2}, inplace=True)
 df_clean.head()
 ```
-**(gambar setelah di encode)**
+<img src="https://github.com/NabielMuaafiiR/Predictive-Analysis-Sentiment-Brand-Tweeter/blob/main/img/setelah encode.jpg" align="center"><br>
 
 Hal ini dilakukan karna model hanya dapat mengenai angka sepagai representasi kelas.
 
@@ -174,14 +174,20 @@ Sebelum data dimasukkan kedalam model, data dibagi menjadi dua bagian, yaitu dat
 ## Modeling
 Model yang digunakan hanya Naive Bayes. Menurut Annur 2018 Metode Bayes merupakan pendekatan statistic untuk melakukan inferensi induksi pada persoalan klasifikasi. Teorema bayes memiliki bentuk umum sebagai berikut:
 
-**(gambar rumus bayes)**
+<img src="https://github.com/NabielMuaafiiR/Predictive-Analysis-Sentiment-Brand-Tweeter/blob/main/img/rumus bayes.jpg" align="center"><br>
 
 Keterangan :
+
 X = Data dengan class yang belum diketahui
+
 H = Hipotesis data X merupakan suatu class spesifik
+
 P(H|X) = Probabilitas hipotesis H berdasarkan kondisi x (posteriori prob.)
+
 P(H) = Probabilitas hipotesis H (prior prob.)
+
 P(X|H) = Probabilitas X berdasarkan kondisi tersebut
+
 P(X) = Probabilitas dari X
 
 Pada percobaan pertama dilakukan fitting data dengan parameter default
@@ -226,7 +232,7 @@ Akurasi adalah metrik evaluasi yang mengukur proporsi prediksi yang benar terhad
 
 Rumus:
 
-**(gambar rumus akurasi)**
+<img src="https://github.com/NabielMuaafiiR/Predictive-Analysis-Sentiment-Brand-Tweeter/blob/main/img/rumus akurasi.jpg" align="center"><br>
 
 Keterangan:
 TP: True Positive (positif yang diprediksi benar)
@@ -247,17 +253,17 @@ F1-score adalah metrik harmonis antara precision dan recall. F1 digunakan untuk 
 Rumus:
 F1-score
 
-**(gambar rumus f1)**
+<img src="https://github.com/NabielMuaafiiR/Predictive-Analysis-Sentiment-Brand-Tweeter/blob/main/img/F1 score.jpg" align="center"><br>
  
 Precision:
 
- **(gambar rumus precision)**
+ <img src="https://github.com/NabielMuaafiiR/Predictive-Analysis-Sentiment-Brand-Tweeter/blob/main/img/precision.jpg" align="center"><br>
  
 Mengukur berapa banyak prediksi positif yang benar.
 
 Recall:
 
- **(gambar rumus recall)**
+ <img src="https://github.com/NabielMuaafiiR/Predictive-Analysis-Sentiment-Brand-Tweeter/blob/main/img/recall.jpg" align="center"><br>
  
 Mengukur berapa banyak dari total data positif yang berhasil dikenali dengan benar.
 
