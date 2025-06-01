@@ -1,4 +1,4 @@
-# Laporan Proyek Machine Learning - Nama Anda
+# Laporan Proyek Machine Learning - Nabiel Muaafii Rahman
 
 ## Domain Proyek
 
@@ -6,7 +6,7 @@ Dalam era digital saat ini, media sosial telah menjadi salah satu platform utama
 
 Analisis sentimen di Twitter memberikan wawasan yang bernilai bagi perusahaan dalam memahami persepsi publik, mengidentifikasi potensi masalah reputasi, serta merespons umpan balik pelanggan secara lebih proaktif. Studi oleh Hu et al. (2017) menunjukkan bahwa analisis terhadap 330 juta tweet dapat mengungkap sentimen pengguna terhadap berbagai industri dan merek, yang pada akhirnya dapat membantu perusahaan dalam menyusun strategi pemasaran dan pengembangan produk yang lebih tepat sasaran.
 
-Proyek ini bertujuan untuk membangun model prediktif yang mampu melakukan klasifikasi sentimen terhadap tweet yang berkaitan dengan merek (brand) yang sedang banyak diperbincangkan di media sosial, khususnya Twitter. Dengan adanya model ini, diharapkan sistem dapat secara otomatis mengidentifikasi apakah suatu tweet mengandung sentimen positif, negatif, atau netral terhadap suatu merek. Hasil dari klasifikasi ini dapat dimanfaatkan oleh perusahaan untuk memantau persepsi publik secara real-time, meningkatkan kualitas layanan, serta merancang strategi komunikasi dan pemasaran yang lebih efektif.
+Proyek ini bertujuan untuk mengevaluasi sejauh mana model prediktif Naive Bayes mampu melakukan klasifikasi sentimen Positive, Negative, dan Neutral, terhadap tweet yang berkaitan dengan merek (brand) yang sedang banyak diperbincangkan di media sosial, khususnya Twitter. Dengan adanya model ini, diharapkan sistem dapat secara otomatis mengidentifikasi apakah suatu tweet mengandung sentimen positif, negatif, atau netral terhadap suatu merek. Hasil klasifikasi ini dapat dimanfaatkan oleh perusahaan untuk memantau persepsi publik, meningkatkan kualitas layanan, serta merancang strategi komunikasi dan pemasaran yang lebih efektif dan responsif.
 
 ## Business Understanding
 
@@ -17,38 +17,28 @@ Bagian laporan ini mencakup:
 ### Problem Statements
 
 Menjelaskan pernyataan masalah latar belakang:
-- Pernyataan Masalah 1
-- Pernyataan Masalah 2
-- Pernyataan Masalah n
+- Seberapa akurat model Naive Bayes dapat melakukan klasifikasi sentimen?
+- Bagaimana performa model Naive Bayes dibandingkan pada matriks evaluasi accuracy dan F1-score?
+- Apakah model Naive Bayes layak untuk digunakan analisis klasifikasi sentimen?
 
 ### Goals
 
 Menjelaskan tujuan dari pernyataan masalah:
-- Jawaban pernyataan masalah 1
-- Jawaban pernyataan masalah 2
-- Jawaban pernyataan masalah n
-
-Semua poin di atas harus diuraikan dengan jelas. Anda bebas menuliskan berapa pernyataan masalah dan juga goals yang diinginkan.
-
-**Rubrik/Kriteria Tambahan (Opsional)**:
-- Menambahkan bagian “Solution Statement” yang menguraikan cara untuk meraih goals. Bagian ini dibuat dengan ketentuan sebagai berikut: 
-
-    ### Solution statements
-    - Mengajukan 2 atau lebih solution statement. Misalnya, menggunakan dua atau lebih algoritma untuk mencapai solusi yang diinginkan atau melakukan improvement pada baseline model dengan hyperparameter tuning.
-    - Solusi yang diberikan harus dapat terukur dengan metrik evaluasi.
+- Membangun model klasifikasi sentimen dengan Naive Bayes
+- Mengevaluasi performa model Naive Bayes menggunakan matriks evaluasi accuracy dan F1-score
+- Memberikan gambaran dan penjelasan terhadap kelayakan model dalam melakukan klasifikasi sentimen
 
 ## Data Understanding
-Paragraf awal bagian ini menjelaskan informasi mengenai data yang Anda gunakan dalam proyek. Sertakan juga sumber atau tautan untuk mengunduh dataset. Contoh: [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Restaurant+%26+consumer+data).
+Dataset yang diambil pada projek ini berasal dari kaggle https://www.kaggle.com/datasets/tusharpaul2001/brand-sentiment-analysis-dataset . Data terdiri dari 8589 baris dan 3 kolom: tweet_text (text tweet), emotion_in_tweet_is_directed_at (brand apa yang dibahas), dan is_there_an_emotion_directed_at_a_brand_or_product (label sentimen tweet). Dataset semua bertipe string.
 
-Selanjutnya uraikanlah seluruh variabel atau fitur pada data. Sebagai contoh:  
+**Tipe Data**
 
-### Variabel-variabel pada Restaurant UCI dataset adalah sebagai berikut:
-- accepts : merupakan jenis pembayaran yang diterima pada restoran tertentu.
-- cuisine : merupakan jenis masakan yang disajikan pada restoran.
-- dst
-
-**Rubrik/Kriteria Tambahan (Opsional)**:
-- Melakukan beberapa tahapan yang diperlukan untuk memahami data, contohnya teknik visualisasi data atau exploratory data analysis.
+**Deskripsi Variabel**
+Variabel  |	Keterangan
+-----------|------------
+tweet_text  |	Text berisi tweet
+emotion_in_tweet_is_directed_at  |	Brand yang dibahas pada tweet 
+is_there_an_emotion_directed_at_a_brand_or_product | Label sentimen tweet
 
 ## Data Preparation
 Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dilakukan. Teknik yang digunakan pada notebook dan laporan harus berurutan.
