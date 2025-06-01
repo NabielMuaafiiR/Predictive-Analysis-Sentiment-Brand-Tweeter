@@ -65,13 +65,9 @@ Pada tahap ini, dataset diperiksa untuk memastikan tidak ada nilai yang hilang (
 
 **(gambar missing value)**
 
-Terdapat banyak sekali missing value pada Kolom emotion_in_tweet_is_directed_at (brand yang dibahas), hal ini dilakukan yang namanya penghapusan missing value sehingga data menjadi seperti ini:
+Terdapat banyak sekali missing value pada Kolom emotion_in_tweet_is_directed_at (brand yang dibahas), hal ini dilakukan yang namanya penghapusan missing value sekaligus menghapus duplikasi data, sehingga data menjadi seperti ini:
 
 **(gambar setelah dihapus)**
-
-Lalu dilakukan penghapusan duplikasi data:
-
-**(gambar setelah dibersihkan duplikasi)**
 
 ### Dilakukan pre-processing text meliputi berbagai tahapan berikut:
 ```
@@ -179,6 +175,14 @@ Sebelum data dimasukkan kedalam model, data dibagi menjadi dua bagian, yaitu dat
 Model yang digunakan hanya Naive Bayes. Menurut Annur 2018 Metode Bayes merupakan pendekatan statistic untuk melakukan inferensi induksi pada persoalan klasifikasi. Teorema bayes memiliki bentuk umum sebagai berikut:
 
 **(gambar rumus bayes)**
+
+Keterangan :
+X = Data dengan class yang belum diketahui
+H = Hipotesis data X merupakan suatu class spesifik
+P(H|X) = Probabilitas hipotesis H berdasarkan kondisi x (posteriori prob.)
+P(H) = Probabilitas hipotesis H (prior prob.)
+P(X|H) = Probabilitas X berdasarkan kondisi tersebut
+P(X) = Probabilitas dari X
 
 Pada percobaan pertama dilakukan fitting data dengan parameter default
 ```
